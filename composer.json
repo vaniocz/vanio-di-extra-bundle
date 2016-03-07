@@ -1,0 +1,33 @@
+{
+    "name": "vanio/vanio-di-extra-bundle",
+    "description": "Allows to configure dependency injection using annotations",
+    "keywords": ["di", "dependency injection"],
+    "type": "symfony-bundle",
+    "homepage": "https://github.com/vaniocz/type-parser",
+    "license": "MIT",
+    "authors": [
+        {"name": "Marek Štípek", "email": "marek.stipek@vanio.cz"}
+    ],
+    "require": {
+        "php": ">=7.0",
+        "doctrine/annotations": "^1.2",
+        "doctrine/cache": "^1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {"Vanio\\TypeParser\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": { "Vanio\\TypeParser\\Tests\\": "tests/" }
+    },
+    "scripts": {
+        "test": "\"./vendor/bin/phpunit\""
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}
