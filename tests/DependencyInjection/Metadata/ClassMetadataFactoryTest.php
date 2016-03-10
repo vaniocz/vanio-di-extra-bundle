@@ -57,7 +57,7 @@ class ClassMetadataFactoryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertNull($classMetadata->getPropertyMetadata('none'));
 
-        $this->assertNull($classMetadata->getPropertyMetadata('privateService'));
+        $this->assertNull($classMetadata->getPropertyMetadata('privateProperty'));
     }
 
     function test_metadata_for_child_class_can_be_obtained()

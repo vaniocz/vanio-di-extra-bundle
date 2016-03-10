@@ -20,14 +20,14 @@ class Foo implements ContainerAwareInterface
     public $optionalService;
 
     /**
-     * @Inject
      * @var self
+     * @Inject
      */
     public $autowiredService;
 
     /**
-     * @Inject
      * @var self|null
+     * @Inject
      */
     public $optionalAutowiredService;
 
@@ -37,26 +37,43 @@ class Foo implements ContainerAwareInterface
     public $extendedService;
 
     /**
-     * @Inject
      * @var self
+     * @Inject
      */
     public $extendedAutowiredService;
 
     /**
-     * @Inject(parameter="vanio_di_extra.tests.parameter")
      * @var string
+     * @Inject(parameter="vanio_di_extra.tests.parameter")
      */
     public $parameter;
+
+    /**
+     * @Inject(id="vanio_di_extra.tests.private_service")
+     */
+    public $privateService;
+
+    /**
+     * @var Baz
+     * @Inject
+     */
+    public $autowiredPrivateService;
+
+    /**
+     * @var Qux
+     * @Inject
+     */
+    public $autowiredPrivateServiceUsingPublicAlias;
 
     public $none;
 
     /**
      * @Inject(id="vanio_di_extra.tests.foo")
      */
-    private $privateService;
+    private $privateProperty;
 
-    public function privateService()
+    public function privateProperty()
     {
-        return $this->privateService;
+        return $this->privateProperty;
     }
 }

@@ -2,10 +2,14 @@
 namespace Vanio\VanioDiExtraBundle\Tests\DependencyInjection\Metadata;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Vanio\VanioDiExtraBundle\DependencyInjection\Container;
 use Vanio\VanioDiExtraBundle\DependencyInjection\Injector;
 use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\MetadataFactory;
+use Vanio\VanioDiExtraBundle\DependencyInjection\ServiceForTypeNotFound;
+use Vanio\VanioDiExtraBundle\Tests\Fixtures\Baz;
 use Vanio\VanioDiExtraBundle\Tests\Fixtures\Foo;
+use Vanio\VanioDiExtraBundle\Tests\Fixtures\Qux;
 use Vanio\VanioDiExtraBundle\Tests\KernelTestCase;
 
 class LazyLoadingInjectionTest extends KernelTestCase
@@ -53,7 +57,29 @@ class LazyLoadingInjectionTest extends KernelTestCase
 
     function test_it_does_not_inject_into_private_properties()
     {
-        $this->assertNull($this->foo()->privateService());
+        $this->assertNull($this->foo()->privateProperty());
+    }
+
+    function test_it_cannot_inject_private_service()
+    {
+        $this->expectException(ServiceNotFoundException::class);
+        $this->expectExceptionMessage('You have requested a non-existent service "vanio_di_extra.tests.private_service".');
+        $this->foo()->privateService;
+    }
+
+    function test_it_cannot_inject_private_service_using_autowiring()
+    {
+        $this->expectException(ServiceForTypeNotFound::class);
+        $this->expectExceptionMessage(sprintf(
+            'You have requested a service for non-resolvable type "%s".',
+            Baz::class
+        ));
+        $this->foo()->autowiredPrivateService;
+    }
+
+    function test_it_can_inject_private_service_using_autowiring_of_public_alias()
+    {
+        $this->assertInstanceOf(Qux::class, $this->foo()->autowiredPrivateServiceUsingPublicAlias);
     }
 
     function test_it_cannot_inject_into_non_existent_properties()

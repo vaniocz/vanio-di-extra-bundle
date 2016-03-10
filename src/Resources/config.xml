@@ -3,13 +3,26 @@
     <parameters>
         <parameter key="vanio_di_extra.dependency_injection.injector.class">Vanio\VanioDiExtraBundle\DependencyInjection\Injector</parameter>
         <parameter key="vanio_di_extra.dependency_injection.metadata.class_metadata_factory.class">Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\ClassMetadataFactory</parameter>
+        <parameter key="vanio_di_extra.dependency_injection.metadata.filesystem_cache.class">Doctrine\Common\Cache\FilesystemCache</parameter>
         <parameter key="vanio_di_extra.dependency_injection.metadata.caching_metadata_factory.class">Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\CachingMetadataFactory</parameter>
     </parameters>
 
     <services>
         <service id="vanio_di_extra.dependency_injection.injector" class="%vanio_di_extra.dependency_injection.injector.class%" autowire="true"/>
-        <service id="vanio_di_extra.dependency_injection.metadata.class_metadata_factory" class="%vanio_di_extra.dependency_injection.metadata.class_metadata_factory.class%" autowire="true">
+
+        <service id="vanio_di_extra.dependency_injection.metadata.class_metadata_factory" class="%vanio_di_extra.dependency_injection.metadata.class_metadata_factory.class%" public="false" autowire="true">
             <argument type="service" id="annotation_reader"/>
+        </service>
+
+        <service id="vanio_di_extra.dependency_injection.metadata.filesystem_cache" class="%vanio_di_extra.dependency_injection.metadata.filesystem_cache.class%" public="false">
+            <argument>%kernel.cache_dir%</argument>
+        </service>
+
+        <service id="vanio_di_extra.dependency_injection.metadata.caching_metadata_factory" class="%vanio_di_extra.dependency_injection.metadata.caching_metadata_factory.class%" autowire="true">
+            <argument type="service" id="vanio_di_extra.dependency_injection.metadata.class_metadata_factory"/>
+            <argument type="service" id="vanio_di_extra.dependency_injection.metadata.filesystem_cache"/>
+            <argument>%kernel.debug%</argument>
+            <autowiring-type>Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\MetadataFactory</autowiring-type>
         </service>
     </services>
 </container>

@@ -16,5 +16,10 @@
                 <argument type="service" id="service_container"/>
             </call>
         </service>
+        <service id="vanio_di_extra.tests.baz" class="Vanio\VanioDiExtraBundle\Tests\Fixtures\Baz" public="false"/>
+        <service id="vanio_di_extra.tests.qux" class="Vanio\VanioDiExtraBundle\Tests\Fixtures\Qux" public="false"/>
+        <service id="vanio_di_extra.tests.private_alias" alias="vanio_di_extra.tests.qux" public="false"/>
+        <service id="vanio_di_extra.tests.public_alias" alias="vanio_di_extra.tests.private_alias" public="true"/>
+        <service id="vanio_di_extra.tests.private_service" class="stdClass" public="false"/>
     </services>
 </container>
