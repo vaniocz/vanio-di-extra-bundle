@@ -72,7 +72,7 @@ class Injector
                 : $this->container->getByType($inject->type(), $invalidBehavior);
         } else {
             // so magic __get is not called on next try
-            $object->$property = null;
+            $object->$property = null; // @codeCoverageIgnore
         }
     }
 }
