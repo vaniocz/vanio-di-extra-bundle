@@ -15,7 +15,7 @@
         </service>
 
         <service id="vanio_di_extra.dependency_injection.metadata.filesystem_cache" class="%vanio_di_extra.dependency_injection.metadata.filesystem_cache.class%" public="false">
-            <argument>%kernel.cache_dir%</argument>
+            <argument>%kernel.cache_dir%/vanio_di_extra</argument>
         </service>
 
         <service id="vanio_di_extra.dependency_injection.metadata.caching_metadata_factory" class="%vanio_di_extra.dependency_injection.metadata.caching_metadata_factory.class%" autowire="true">
