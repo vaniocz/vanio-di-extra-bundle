@@ -10,8 +10,8 @@ A Symfony2 Bundle providing an ability to resolve services by type by calling `g
 namespace AppBundle\Controller;
 
 use Symfony\Component\Translation\TranslatorInterface;
-use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\Inject;
 use Vanio\VanioDiExtraBundle\Controller;
+use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\Inject;
 
 class HelloController extends Controller
 {
