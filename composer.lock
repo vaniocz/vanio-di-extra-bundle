@@ -950,7 +950,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -1009,7 +1009,7 @@
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php56.git",
@@ -1065,16 +1065,16 @@
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php70.git",
-                "reference": "8428ceddbbaf102f2906769a8ef2438220c5cb95"
+                "reference": "386c1be9cad3ab531425211919e78c37971be4ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/8428ceddbbaf102f2906769a8ef2438220c5cb95",
-                "reference": "8428ceddbbaf102f2906769a8ef2438220c5cb95",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/386c1be9cad3ab531425211919e78c37971be4ce",
+                "reference": "386c1be9cad3ab531425211919e78c37971be4ce",
                 "shasum": ""
             },
             "require": {
@@ -1120,11 +1120,11 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-01-25 08:44:42"
+            "time": "2016-01-28 22:42:02"
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-util.git",
@@ -1547,12 +1547,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vaniocz/type-parser.git",
-                "reference": "88c9326652f67c74437fe6425bb90c7c52bcb90e"
+                "reference": "81b65627aeedf1e11a1c072d4f7f4c4647e6a8bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vaniocz/type-parser/zipball/88c9326652f67c74437fe6425bb90c7c52bcb90e",
-                "reference": "88c9326652f67c74437fe6425bb90c7c52bcb90e",
+                "url": "https://api.github.com/repos/vaniocz/type-parser/zipball/81b65627aeedf1e11a1c072d4f7f4c4647e6a8bc",
+                "reference": "81b65627aeedf1e11a1c072d4f7f4c4647e6a8bc",
                 "shasum": ""
             },
             "require": {
@@ -1594,7 +1594,7 @@
                 "type resolver",
                 "var"
             ],
-            "time": "2016-03-07 15:15:56"
+            "time": "2016-03-09 17:06:13"
         }
     ],
     "packages-dev": [

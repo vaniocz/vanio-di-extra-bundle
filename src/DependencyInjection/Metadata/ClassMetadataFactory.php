@@ -1,5 +1,5 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\DependencyInjection;
+namespace Vanio\VanioDiExtraBundle\DependencyInjection\Metadata;
 
 use Doctrine\Common\Annotations\Reader;
 use Vanio\TypeParser\TypeParser;
@@ -12,6 +12,7 @@ class ClassMetadataFactory implements MetadataFactory
     /** @var TypeParser */
     private $typeParser;
 
+    /** @var array */
     private $metadata = [];
 
     public function __construct(Reader $annotationReader, TypeParser $phpParser)
@@ -22,55 +23,48 @@ class ClassMetadataFactory implements MetadataFactory
 
     /**
      * @param object|string $class
-     * @return Metadata
+     * @return ClassMetadata
      */
-    public function getMetadataFor($class): Metadata
+    public function getMetadataForClass($class): ClassMetadata
     {
         $class = is_object($class) ? get_class($class) : (string) $class;
 
-        return $this->metadata[$class] ?? ($this->metadata[$class] = $this->loadClassMetadata($class));
+        if (!isset($this->metadata[$class])) {
+            $this->metadata[$class] = $this->loadClassMetadata(new \ReflectionClass($class));
+        }
+
+        return $this->metadata[$class];
     }
 
-    public function hasMetadataFor($class): bool
+    private function loadClassMetadata(\ReflectionClass $class): ClassMetadata
     {
-        return $this->getMetadataFor($class);
-    }
-
-    /**
-     * @param string $class
-     * @return Inject[]
-     */
-    private function loadClassMetadata(string $class): array
-    {
-        $class = new \ReflectionClass($class);
-        $defaultProperties = $class->getDefaultProperties();
-        $metadata = [];
+        $propertyMetadata = [];
 
         foreach ($class->getProperties(\ReflectionProperty::IS_PUBLIC) as $property) {
-            if (!$property->isStatic() && !isset($defaultProperties[$property->name])) {
-                $metadata[$property->name] = $this->loadPropertyMetadata($property);
+            if (!$property->isStatic()) {
+                $propertyMetadata[$property->name] = $this->resolvePropertyInject($property);
             }
         }
 
-        return $metadata;
-   }
+        return new ClassMetadata($class->name, $propertyMetadata);
+    }
 
     /**
      * @param \ReflectionProperty $property
      * @return Inject|null
      */
-    private function loadPropertyMetadata(\ReflectionProperty $property)
+    private function resolvePropertyInject(\ReflectionProperty $property)
     {
         if (!$inject = $this->annotationReader->getPropertyAnnotation($property, Inject::class)) {
             return null;
-        } elseif ($inject->id() || $inject->type()) {
+        } elseif ($inject->id() || $inject->parameter()) {
             return $inject;
         } elseif ($type = $this->typeParser->parsePropertyTypes($property->class)[$property->name] ?? null) {
-            return Inject::byType($type);
+            return Inject::byType($type->type(), !$type->isNullable());
         }
 
         throw new \LogicException(sprintf(
-            'Cannot resolve target service for injection into %s::$%s property. Make sure it is properly annotated using @Inject and it is not missing a service ID or @var type annotation.',
+            'Cannot resolve target service for injection into %s::$%s property. Make sure it is properly annotated using @Inject and it is not missing a service ID, parameter name or @var type annotation.',
             $property->class,
             $property->name
         ));

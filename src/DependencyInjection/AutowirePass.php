@@ -4,6 +4,11 @@ namespace Vanio\VanioDiExtraBundle\DependencyInjection;
 use Symfony\Component\DependencyInjection\Compiler\AutowirePass as BaseAutowirePass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+/**
+ * {@inheritDoc}
+ * Stores a map of all autowirable types as keys and public service definition or alias IDs
+ * into "vanio_di_extra_autowirable_types" container parameter.
+ */
 class AutowirePass extends BaseAutowirePass
 {
     /** @var ContainerBuilder|null */
@@ -14,9 +19,11 @@ class AutowirePass extends BaseAutowirePass
         $this->container = $container;
         $container->setParameter('vanio_di_extra_autowirable_types', $this->resolveAutowirableTypes());
         parent::process($container);
-        $this->container = null;
     }
 
+    /**
+     * @return string[]
+     */
     private function resolveAutowirableTypes(): array
     {
         $types = $this->resolveAvailableTypes();
@@ -30,6 +37,9 @@ class AutowirePass extends BaseAutowirePass
         return $types;
     }
 
+    /**
+     * @return string[]
+     */
     private function resolveAvailableTypes(): array
     {
         $container = $this->container;

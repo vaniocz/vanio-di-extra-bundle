@@ -10,9 +10,7 @@ class VanioDiExtraExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
-        $configuration = $this->getConfiguration($configs, $container);
-        $this->processConfiguration($configuration, $configs);
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources'));
         $loader->load('config.xml');
     }
 }

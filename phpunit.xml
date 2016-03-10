@@ -7,6 +7,10 @@
     colors="true"
     bootstrap="vendor/autoload.php"
 >
+    <php>
+        <server name="KERNEL_DIR" value="tests/Fixtures"/>
+    </php>
+
     <testsuites>
         <testsuite name="Vanio Dependency Injection Extra Bundle Test Suite">
             <directory>tests</directory>

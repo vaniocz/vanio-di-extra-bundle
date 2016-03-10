@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="vanio_di_extra.dependency_injection.injector.class">Vanio\VanioDiExtraBundle\DependencyInjection\Injector</parameter>
+        <parameter key="vanio_di_extra.dependency_injection.metadata.class_metadata_factory.class">Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\ClassMetadataFactory</parameter>
+        <parameter key="vanio_di_extra.dependency_injection.metadata.caching_metadata_factory.class">Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\CachingMetadataFactory</parameter>
+    </parameters>
+
+    <services>
+        <service id="vanio_di_extra.dependency_injection.injector" class="%vanio_di_extra.dependency_injection.injector.class%" autowire="true"/>
+        <service id="vanio_di_extra.dependency_injection.metadata.class_metadata_factory" class="%vanio_di_extra.dependency_injection.metadata.class_metadata_factory.class%" autowire="true">
+            <argument type="service" id="annotation_reader"/>
+        </service>
+    </services>
+</container>
