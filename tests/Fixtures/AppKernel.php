@@ -5,8 +5,8 @@ use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel as BaseAppKernel;
 use Symfony\Component\HttpKernel\Kernel;
-use Vanio\VanioDiExtraBundle\VanioDiExtraBundle;
 use Vanio\VanioDiExtraBundle\DependencyInjection\Container;
+use Vanio\VanioDiExtraBundle\VanioDiExtraBundle;
 
 class AppKernel extends BaseAppKernel
 {
