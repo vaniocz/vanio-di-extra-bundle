@@ -1,5 +1,7 @@
 #Vanio Dependency Injection Extra Bundle
 
+PULL REQUEST TEST
+
 [![Build Status](https://api.travis-ci.org/vaniocz/vanio-di-extra-bundle.svg?branch=master)](https://travis-ci.org/vaniocz/vanio-di-extra-bundle) [![Coverage Status](https://coveralls.io/repos/github/vaniocz/vanio-di-extra-bundle/badge.svg?branch=master)](https://coveralls.io/github/vaniocz/vanio-di-extra-bundle?branch=master) [![License](https://poser.pugx.org/vanio/vanio-di-extra-bundle/license)](https://packagist.org/packages/vanio/vanio-di-extra-bundle)
 
 A Symfony2 Bundle providing an ability to resolve services by type by calling `getByType` on service container and lazily inject services or parameters into public properties of classes implementing `ContainerAwareInterface` (like controllers, CLI commands or Doctrine fixtures) using `Inject` annotation.
