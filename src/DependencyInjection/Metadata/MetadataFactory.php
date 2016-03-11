@@ -7,5 +7,5 @@ interface MetadataFactory
      * @param object|string $class
      * @return ClassMetadata
      */
-    public function getMetadataForClass($class): ClassMetadata;
+    function getMetadataForClass($class): ClassMetadata;
 }

@@ -2,11 +2,11 @@
 namespace Vanio\VanioDiExtraBundle\Tests\Fixtures;
 
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
-use Vanio\VanioDiExtraBundle\DependencyInjection\Container;
-use Vanio\VanioDiExtraBundle\VanioDiExtraBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel as BaseAppKernel;
 use Symfony\Component\HttpKernel\Kernel;
+use Vanio\VanioDiExtraBundle\DependencyInjection\Container;
+use Vanio\VanioDiExtraBundle\VanioDiExtraBundle;
 
 class AppKernel extends BaseAppKernel
 {

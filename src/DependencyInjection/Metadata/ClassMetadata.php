@@ -25,6 +25,7 @@ class ClassMetadata
     }
 
     /**
+     * @param string $property
      * @return Inject[]|Inject|null
      */
     public function getPropertyMetadata(string $property = null)

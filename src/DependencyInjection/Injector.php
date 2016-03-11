@@ -15,6 +15,7 @@ class Injector
     /**
      * @param Container $container
      * @param MetadataFactory $metadataFactory
+     * @throws \InvalidArgumentException
      */
     public function __construct(ContainerInterface $container, MetadataFactory $metadataFactory)
     {

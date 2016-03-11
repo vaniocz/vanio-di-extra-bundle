@@ -66,7 +66,7 @@ class AutowirePass extends BaseAutowirePass
     private function findPublicAliasId(string $serviceId)
     {
         foreach ($this->container->getAliases() as $id => $alias) {
-            if ($alias->isPublic() && (string) $alias === $serviceId) {
+            if ($alias->isPublic() && $serviceId === (string) $alias) {
                 return $id;
             }
         }
