@@ -1,6 +1,7 @@
 <?php
 namespace Vanio\VanioDiExtraBundle\Tests\DependencyInjection\Metadata;
 
+use Vanio\TypeParser\CachingParser;
 use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\CachingMetadataFactory;
 use Vanio\VanioDiExtraBundle\Tests\Fixtures\AutowiredServices;
 use Vanio\VanioDiExtraBundle\Tests\Fixtures\Foo;
@@ -10,6 +11,7 @@ class AutowiringTest extends KernelTestCase
 {
     function test_autowiring()
     {
+        $this->assertInstanceOf(CachingParser::class, $this->autowiredServices()->typeParser);
         $this->assertInstanceOf(CachingMetadataFactory::class, $this->autowiredServices()->metadataFactory);
         $this->assertInstanceOf(Foo::class, $this->autowiredServices()->foo);
     }
