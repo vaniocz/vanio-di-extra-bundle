@@ -2,23 +2,23 @@
 namespace Vanio\VanioDiExtraBundle\DependencyInjection\Metadata;
 
 use Doctrine\Common\Annotations\Reader;
-use Vanio\TypeParser\TypeParser;
+use Vanio\TypeParser\Parser;
 
 class ClassMetadataFactory implements MetadataFactory
 {
     /** @var Reader */
     private $annotationReader;
 
-    /** @var TypeParser */
+    /** @var Parser */
     private $typeParser;
 
     /** @var array */
     private $metadata = [];
 
-    public function __construct(Reader $annotationReader, TypeParser $phpParser)
+    public function __construct(Reader $annotationReader, Parser $typeParser)
     {
         $this->annotationReader = $annotationReader;
-        $this->typeParser = $phpParser;
+        $this->typeParser = $typeParser;
     }
 
     /**

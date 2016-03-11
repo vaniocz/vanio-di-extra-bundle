@@ -1547,12 +1547,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vaniocz/type-parser.git",
-                "reference": "81b65627aeedf1e11a1c072d4f7f4c4647e6a8bc"
+                "reference": "533d6148964a8ffd23412ca027657966e74b7891"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vaniocz/type-parser/zipball/81b65627aeedf1e11a1c072d4f7f4c4647e6a8bc",
-                "reference": "81b65627aeedf1e11a1c072d4f7f4c4647e6a8bc",
+                "url": "https://api.github.com/repos/vaniocz/type-parser/zipball/533d6148964a8ffd23412ca027657966e74b7891",
+                "reference": "533d6148964a8ffd23412ca027657966e74b7891",
                 "shasum": ""
             },
             "require": {
@@ -1594,7 +1594,7 @@
                 "type resolver",
                 "var"
             ],
-            "time": "2016-03-09 17:06:13"
+            "time": "2016-03-11 00:07:12"
         }
     ],
     "packages-dev": [

@@ -1,14 +1,14 @@
 <?php
 namespace Vanio\VanioDiExtraBundle\DependencyInjection\Metadata;
 
-use Doctrine\Common\Cache\CacheProvider;
+use Doctrine\Common\Cache\Cache;
 
 class CachingMetadataFactory implements MetadataFactory
 {
     /** @var MetadataFactory */
     private $metadataFactory;
 
-    /** @var CacheProvider */
+    /** @var Cache */
     private $cache;
 
     /** @var array */
@@ -19,10 +19,10 @@ class CachingMetadataFactory implements MetadataFactory
 
     /**
      * @param MetadataFactory $metadataFactory
-     * @param CacheProvider $cache
+     * @param Cache $cache
      * @param bool $debug Whether to invalidate cache on file change (slower)
      */
-    public function __construct(MetadataFactory $metadataFactory, CacheProvider $cache, bool $debug = true)
+    public function __construct(MetadataFactory $metadataFactory, Cache $cache, bool $debug = true)
     {
         $this->metadataFactory = $metadataFactory;
         $this->cache = $cache;
@@ -38,13 +38,11 @@ class CachingMetadataFactory implements MetadataFactory
         $class = is_object($class) ? get_class($class) : (string) $class;
 
         if (!isset($this->metadata[$class])) {
-            if ($this->debug) {
-                $this->cache->setNamespace($this->resolveCacheNamespace(new \ReflectionClass($class)));
-            }
+            $cacheId = $this->resolveCacheId($class);
 
-            if (!$metadata = $this->cache->fetch($class)) {
+            if (!$metadata = $this->cache->fetch($cacheId)) {
                 $metadata = $this->metadataFactory->getMetadataForClass($class);
-                $this->cache->save($class, $metadata);
+                $this->cache->save($cacheId, $metadata);
             }
 
             $this->metadata[$class] = $metadata;
@@ -54,13 +52,18 @@ class CachingMetadataFactory implements MetadataFactory
     }
 
     /**
-     * @param \ReflectionClass $class
+     * @param string $class
      * @return int|bool
      */
-    private function resolveCacheNamespace(\ReflectionClass $class)
+    private function resolveCacheId(string $class)
     {
-        $file = preg_replace('~\(\d+\) : eval\(\)\'d code$~', '', $class->getFileName());
+        if ($this->debug) {
+            $file = preg_replace('~\(\d+\) : eval\(\)\'d code$~', '', (new \ReflectionClass($class))->getFileName());
+            $namespace = sprintf('%s[%s][%d]', __CLASS__, $file, @filemtime($file));
+        } else {
+            $namespace = __CLASS__;
+        }
 
-        return sprintf('%s[%d]', $file, @filemtime($file));
+        return sprintf('%s[%s]', $namespace, $class);
     }
 }

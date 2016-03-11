@@ -12,7 +12,7 @@ class CachingMetadataFactoryTest extends \PHPUnit_Framework_TestCase
     /** @var ClassMetadata */
     private $classMetadata;
 
-    /** @var ArrayCache */
+    /** @var ArrayCache|\PHPUnit_Framework_MockObject_MockObject */
     private $cache;
 
     /** @var ClassMetadataFactory|\PHPUnit_Framework_MockObject_MockObject */
@@ -26,19 +26,25 @@ class CachingMetadataFactoryTest extends \PHPUnit_Framework_TestCase
             ->method('getMetadataForClass')
             ->with(Foo::class)
             ->willReturn($this->classMetadata);
-        $this->cache = new ArrayCache;
+        $this->cache = $this->getMockBuilder(ArrayCache::class)->enableProxyingToOriginalMethods()->getMock();
     }
 
     function test_metadata_for_class_can_be_obtained()
     {
-        $cachingMetadataFactory = new CachingMetadataFactory($this->classMetadataFactory, $this->cache);
-        $this->assertSame($this->classMetadata, $cachingMetadataFactory->getMetadataForClass(Foo::class));
-        $namespace = $this->cache->getNamespace();
-        $this->assertRegExp('~Foo\.php\[\d+\]$~', $namespace);
+        $cacheIdPattern = sprintf(
+            '~%s\[.*\Foo\.php\]\[\d+\]\[%s]$~',
+            preg_quote(CachingMetadataFactory::class),
+            preg_quote(Foo::class)
+        );
+        $this->cache->expects($this->any())
+            ->method('fetch')
+            ->with($this->matchesRegularExpression($cacheIdPattern));
 
         $cachingMetadataFactory = new CachingMetadataFactory($this->classMetadataFactory, $this->cache);
         $this->assertSame($this->classMetadata, $cachingMetadataFactory->getMetadataForClass(Foo::class));
-        $this->assertSame($namespace, $this->cache->getNamespace());
+
+        $cachingMetadataFactory = new CachingMetadataFactory($this->classMetadataFactory, $this->cache);
+        $this->assertSame($this->classMetadata, $cachingMetadataFactory->getMetadataForClass(Foo::class));
         $this->assertSame($this->classMetadata, $cachingMetadataFactory->getMetadataForClass(Foo::class));
 
         $this->assertSame(1, $this->cache->getStats()['hits']);
@@ -46,9 +52,12 @@ class CachingMetadataFactoryTest extends \PHPUnit_Framework_TestCase
 
     function test_metadata_for_class_can_be_obtained_without_cache_invalidation()
     {
+        $this->cache->expects($this->any())
+            ->method('fetch')
+            ->with(sprintf('%s[%s]', CachingMetadataFactory::class, Foo::class));
+
         $cachingMetadataFactory = new CachingMetadataFactory($this->classMetadataFactory, $this->cache, false);
         $this->assertSame($this->classMetadata, $cachingMetadataFactory->getMetadataForClass(Foo::class));
-        $this->assertEmpty($this->cache->getNamespace());
 
         $cachingMetadataFactory = new CachingMetadataFactory($this->classMetadataFactory, $this->cache, false);
         $this->assertSame($this->classMetadata, $cachingMetadataFactory->getMetadataForClass(Foo::class));
