@@ -34,35 +34,35 @@ class HelloController extends Controller
 
 It is also possible to inject a service using it's ID
 ```php
-    /**
-     * @Inject(id="translator")
-     */
-    public $translator;
+/**
+ * @Inject(id="translator")
+ */
+public $translator;
 ```
 
 It is also possible to inject an optional dependency which means that it does not throw exception when the service is not found.
 ```php
-    /**
-     * @Inject(id="translator", required=false)
-     */
-    public $translator;
+/**
+ * @Inject(id="translator", required=false)
+ */
+public $translator;
 ```
 
 Injecting an optional dependency when injecting by type can be achieved using @var annotation.
 ```php
-    /**
-     * @var TranslatorInterface|null
-     * @Inject
-     */
-    public $translator;
+/**
+ * @var TranslatorInterface|null
+ * @Inject
+ */
+public $translator;
 ```
 
 Injecting of container parameters is also possible
 ```php
-    /**
-     * @Inject(parameter="kernel.cache_dir")
-     */
-    public $cacheDirectory;
+/**
+ * @Inject(parameter="kernel.cache_dir")
+ */
+public $cacheDirectory;
 ```
 
 All you need to do for using the Inject annotation is to use `Vanio\VanioDiExtraBundle\DependencyInjection\ContainerAwareTrait` where you normally use the default `Symfony\Component\DependencyInjection\ContainerAwareTrait`.
@@ -83,7 +83,7 @@ class AppKernel extends Kernel
 {
     // ...
 
-    public function registerBundles()
+    public function registerBundles(): array
     {
         $bundles = [
             // ...
