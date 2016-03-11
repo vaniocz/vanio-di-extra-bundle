@@ -32,7 +32,7 @@ trait ContainerAwareTrait
     }
 
     /**
-     * Tries to inject service into the given property.
+     * Tries to inject service or parameter into the given property.
      *
      * @param string $property
      * @return mixed

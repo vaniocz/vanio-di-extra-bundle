@@ -30,7 +30,7 @@ class Injector
     }
 
     /**
-     * Unsets all properties marked for injection so lazy loading using __call is possible.
+     * Unsets all properties marked for injection so lazy loading using __get is possible.
      *
      * @param object $object
      */
@@ -42,7 +42,7 @@ class Injector
     }
 
     /**
-     * Injects a service into the given object property.
+     * Injects a service or parameter into the given object property.
      *
      * @param object $object
      * @param string $property
