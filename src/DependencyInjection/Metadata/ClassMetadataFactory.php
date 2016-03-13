@@ -64,7 +64,7 @@ class ClassMetadataFactory implements MetadataFactory
         }
 
         throw new \LogicException(sprintf(
-            'Cannot resolve target service for injection into %s::$%s property. Make sure it is properly annotated using @Inject and it is not missing a service ID, parameter name or @var type annotation.',
+            'Cannot resolve target service for injection into %s::$%s property. Make sure it is properly annotated using @Inject and it is not missing a service ID, a parameter marked by a percent sign or @var type annotation.',
             $property->class,
             $property->name
         ));
