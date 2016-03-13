@@ -36,7 +36,6 @@ class LazyLoadingInjectionTest extends KernelTestCase
     function test_it_lazily_injects_services_by_id()
     {
         $this->assertInstanceOf(Foo::class, $this->foo()->service);
-        $this->assertNull($this->foo()->optionalService);
     }
 
     function test_it_lazily_injects_services_using_autowiring()
