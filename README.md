@@ -63,7 +63,7 @@ public $translator;
 Injecting of container parameters is also possible
 ```php
 /**
- * @Inject("%kernel.cache_dir%")
+ * @Inject("%kernel.cache_dir%/app")
  */
 public $cacheDirectory;
 ```
