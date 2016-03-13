@@ -38,7 +38,7 @@ class HelloController extends Controller
 It is also possible to inject a service using it's ID
 ```php
 /**
- * @Inject("translator)
+ * @Inject("translator")
  */
 public $translator;
 ```
