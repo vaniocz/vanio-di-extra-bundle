@@ -6,13 +6,14 @@
     backupGlobals="false"
     colors="true"
     bootstrap="vendor/autoload.php"
+    beStrictAboutTestsThatDoNotTestAnything="true"
 >
     <php>
         <server name="KERNEL_DIR" value="tests/Fixtures"/>
     </php>
 
     <testsuites>
-        <testsuite name="Vanio Dependency Injection Extra Bundle Test Suite">
+        <testsuite>
             <directory>tests</directory>
         </testsuite>
     </testsuites>
