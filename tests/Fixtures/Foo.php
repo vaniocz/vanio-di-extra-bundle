@@ -44,9 +44,15 @@ class Foo implements ContainerAwareInterface
 
     /**
      * @var string
-     * @Inject("%vanio_di_extra.tests.parameter%")
+     * @Inject("%vanio_di_extra.tests.parameter%/foo")
      */
     public $parameter;
+
+    /**
+     * @var string
+     * @Inject("%vanio_di_extra.tests.parameters%")
+     */
+    public $parameters;
 
     /**
      * @Inject("vanio_di_extra.tests.private_service")

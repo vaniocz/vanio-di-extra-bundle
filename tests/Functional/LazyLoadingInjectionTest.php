@@ -46,7 +46,8 @@ class LazyLoadingInjectionTest extends KernelTestCase
 
     function test_it_lazily_injects_parameters()
     {
-        $this->assertSame('parameter', $this->foo()->parameter);
+        $this->assertSame('parameter/foo', $this->foo()->parameter);
+        $this->assertSame(['parameter'], $this->foo()->parameters);
     }
 
     function test_it_skips_injecting_missing_optional_dependency()

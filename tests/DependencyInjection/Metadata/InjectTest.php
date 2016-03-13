@@ -22,7 +22,7 @@ class InjectTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertNull((new Inject)->parameter());
         $this->assertSame('%parameter%', (new Inject(['value' => '%parameter%']))->parameter());
-        $this->assertSame('%parameter%', Inject::byParameter('%parameter%')->parameter());
+        $this->assertSame('%parameter%/foo', Inject::byParameter('%parameter%/foo')->parameter());
     }
 
     function test_it_can_be_required()

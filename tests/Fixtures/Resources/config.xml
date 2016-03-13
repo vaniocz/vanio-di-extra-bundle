@@ -7,6 +7,9 @@
     <parameters>
         <parameter key="kernel.secret">secret</parameter>
         <parameter key="vanio_di_extra.tests.parameter">parameter</parameter>
+        <parameter key="vanio_di_extra.tests.parameters" type="collection">
+            <parameter>parameter</parameter>
+        </parameter>
     </parameters>
 
     <services>
