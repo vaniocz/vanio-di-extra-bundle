@@ -23,7 +23,7 @@ class LazyLoadingInjectionTest extends KernelTestCase
         (new Foo)->setContainer($container);
     }
 
-    function test_it_is_not_possible_to_instantiate_injector_using_incorrent_container_instance()
+    function test_it_is_not_possible_to_instantiate_injector_using_incorrect_container_instance()
     {
         $container = $this->getMockWithoutInvokingTheOriginalConstructor(ContainerInterface::class);
         $metadataFactory = $this->getMockWithoutInvokingTheOriginalConstructor(MetadataFactory::class);
