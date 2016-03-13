@@ -53,7 +53,7 @@ class ClassMetadataFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($inject->isRequired());
 
         $inject = $classMetadata->getPropertyMetadata('parameter');
-        $this->assertSame('vanio_di_extra.tests.parameter', $inject->parameter());
+        $this->assertSame('%vanio_di_extra.tests.parameter%', $inject->parameter());
 
         $this->assertNull($classMetadata->getPropertyMetadata('none'));
 
@@ -89,7 +89,7 @@ class ClassMetadataFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($inject->isRequired());
 
         $inject = $classMetadata->getPropertyMetadata('parameter');
-        $this->assertSame('vanio_di_extra.tests.parameter', $inject->parameter());
+        $this->assertSame('%vanio_di_extra.tests.parameter%', $inject->parameter());
     }
 
     function test_metadata_for_class_with_incorrectly_annotated_property_cannot_be_obtained()

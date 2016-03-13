@@ -59,7 +59,7 @@ class Injector
             ));
         } elseif ($inject = $this->metadataFactory->getMetadataForClass($object)->getPropertyMetadata($property)) {
             if ($parameter = $inject->parameter()) {
-                $object->$property = $this->container->getParameter($parameter);
+                $object->$property = $this->container->getParameterBag()->resolveValue($parameter);
 
                 return;
             }

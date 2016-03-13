@@ -23,15 +23,15 @@ class Inject
      * Annotation constructor
      *
      * @param array $options Available keys are (string) "value" (the default option) and (bool) "required"
-     *                       Value represents an ID or a parameter when it's surrounded by a percent sign
+     *                       Value represents an ID or a parameter expression when it contains a percent sign
      */
     public function __construct(array $options = [])
     {
         if (isset($options['value'])) {
-            if (substr($options['value'], 0, 1) === '%') {
-                $this->parameter = substr($options['value'], 1, -1);
-            } else {
+            if (strpos($options['value'], '%') === false) {
                 $this->id = (string) $options['value'];
+            } else {
+                $this->parameter = (string) $options['value'];
             }
         }
 
