@@ -10,6 +10,8 @@ JMS DI Extra Bundle has a similar annotation but it covers much more functionali
 <?php
 namespace AppBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Translation\TranslatorInterface;
 use Vanio\VanioDiExtraBundle\Controller;
 use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\Inject;
