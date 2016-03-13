@@ -6,7 +6,7 @@ use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\Inject;
 class Bar extends Foo
 {
     /**
-     * @Inject(id="vanio_di_extra.tests.foo", required=false)
+     * @Inject("vanio_di_extra.tests.foo", required=false)
      */
     public $extendedService;
 

@@ -20,17 +20,22 @@ class Inject
     private $required;
 
     /**
-     * @param array $options An array of options, available keys are "id", "parameter" and "required"
+     * Annotation constructor
+     *
+     * @param array $options Available keys are (string) "value" (the default option) and (bool) "required"
+     *                       Value represents an ID or a parameter when it's surrounded by a percent sign
      */
     public function __construct(array $options = [])
     {
-        $this->id = isset($options['id']) ? (string) $options['id'] : null;
-        $this->parameter = isset($options['parameter']) ? (string) $options['parameter'] : null;
-        $this->required = isset($options['required']) ? (bool) $options['required'] : true;
-
         if (isset($options['value'])) {
-           throw new \InvalidArgumentException('Inject annotation does not have a default option, use "id", "parameter", "required" option or annotate the property using @var annotation.');
+            if (substr($options['value'], 0, 1) === '%') {
+                $this->parameter = substr($options['value'], 1, -1);
+            } else {
+                $this->id = (string) $options['value'];
+            }
         }
+
+        $this->required = isset($options['required']) ? (bool) $options['required'] : true;
     }
 
     public static function byId(string $id, bool $required = true): self

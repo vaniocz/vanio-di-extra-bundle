@@ -10,12 +10,12 @@ class Foo implements ContainerAwareInterface
     use ContainerAwareTrait;
 
     /**
-     * @Inject(id="vanio_di_extra.tests.foo")
+     * @Inject("vanio_di_extra.tests.foo")
      */
     public $service;
 
     /**
-     * @Inject(id="vanio_di_extra.tests.optional_service", required=false)
+     * @Inject("vanio_di_extra.tests.optional_service", required=false)
      */
     public $optionalService;
 
@@ -32,7 +32,7 @@ class Foo implements ContainerAwareInterface
     public $optionalAutowiredService;
 
     /**
-     * @Inject(id="vanio_di_extra.tests.foo")
+     * @Inject("vanio_di_extra.tests.foo")
      */
     public $extendedService;
 
@@ -44,12 +44,12 @@ class Foo implements ContainerAwareInterface
 
     /**
      * @var string
-     * @Inject(parameter="vanio_di_extra.tests.parameter")
+     * @Inject("%vanio_di_extra.tests.parameter%")
      */
     public $parameter;
 
     /**
-     * @Inject(id="vanio_di_extra.tests.private_service")
+     * @Inject("vanio_di_extra.tests.private_service")
      */
     public $privateService;
 
@@ -68,7 +68,7 @@ class Foo implements ContainerAwareInterface
     public $none;
 
     /**
-     * @Inject(id="vanio_di_extra.tests.foo")
+     * @Inject("vanio_di_extra.tests.foo")
      */
     private $privateProperty;
 
