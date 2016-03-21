@@ -3,10 +3,7 @@ namespace Vanio\VanioDiExtraBundle\Tests\DependencyInjection\Metadata;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
-use Vanio\TypeParser\TypeContextFactory;
 use Vanio\TypeParser\TypeParser;
-use Vanio\TypeParser\TypeResolver;
-use Vanio\TypeParser\UseStatementsParser;
 use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\ClassMetadataFactory;
 use Vanio\VanioDiExtraBundle\Tests\Fixtures\Bar;
 use Vanio\VanioDiExtraBundle\Tests\Fixtures\Baz;
@@ -20,7 +17,7 @@ class ClassMetadataFactoryTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         AnnotationRegistry::registerFile(__DIR__ . '/../../../src/DependencyInjection/Metadata/Inject.php');
-        $typeParser = new TypeParser(new TypeResolver, new TypeContextFactory(new UseStatementsParser));
+        $typeParser = new TypeParser;
         $this->classMetadataFactory = new ClassMetadataFactory(new AnnotationReader, $typeParser);
     }
 
