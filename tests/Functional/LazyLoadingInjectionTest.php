@@ -16,7 +16,7 @@ class LazyLoadingInjectionTest extends KernelTestCase
 {
     function test_setting_incorrect_instance_of_container_inside_container_aware()
     {
-        $container = $this->getMockWithoutInvokingTheOriginalConstructor(ContainerInterface::class);
+        $container = $this->createMock(ContainerInterface::class);
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(sprintf('Container must be an instance of "%s" class.', Container::class));
 
@@ -25,8 +25,8 @@ class LazyLoadingInjectionTest extends KernelTestCase
 
     function test_it_is_not_possible_to_instantiate_injector_using_incorrect_container_instance()
     {
-        $container = $this->getMockWithoutInvokingTheOriginalConstructor(ContainerInterface::class);
-        $metadataFactory = $this->getMockWithoutInvokingTheOriginalConstructor(MetadataFactory::class);
+        $container = $this->createMock(ContainerInterface::class);
+        $metadataFactory = $this->createMock(MetadataFactory::class);
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(sprintf('Container must be an instance of "%s" class.', Container::class));
 

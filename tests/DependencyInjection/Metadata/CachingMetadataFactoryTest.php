@@ -22,7 +22,7 @@ class CachingMetadataFactoryTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->classMetadata = new ClassMetadata(Foo::class);
-        $this->classMetadataFactory = $this->getMockWithoutInvokingTheOriginalConstructor(ClassMetadataFactory::class);
+        $this->classMetadataFactory = $this->createMock(ClassMetadataFactory::class);
         $this->cache = $this->getMockBuilder(ArrayCache::class)->enableProxyingToOriginalMethods()->getMock();
     }
 
