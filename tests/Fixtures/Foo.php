@@ -1,9 +1,9 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\Tests\Fixtures;
+namespace Vanio\DiExtraBundle\Tests\Fixtures;
 
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Vanio\VanioDiExtraBundle\DependencyInjection\ContainerAwareTrait;
-use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\Inject;
+use Vanio\DiExtraBundle\DependencyInjection\ContainerAwareTrait;
+use Vanio\DiExtraBundle\DependencyInjection\Metadata\Inject;
 
 class Foo implements ContainerAwareInterface
 {

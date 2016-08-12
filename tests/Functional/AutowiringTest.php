@@ -1,11 +1,11 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\Tests\DependencyInjection\Metadata;
+namespace Vanio\DiExtraBundle\Tests\DependencyInjection\Metadata;
 
+use Vanio\DiExtraBundle\DependencyInjection\Metadata\CachingMetadataFactory;
+use Vanio\DiExtraBundle\Tests\Fixtures\AutowiredServices;
+use Vanio\DiExtraBundle\Tests\Fixtures\Foo;
+use Vanio\DiExtraBundle\Tests\KernelTestCase;
 use Vanio\TypeParser\CachingParser;
-use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\CachingMetadataFactory;
-use Vanio\VanioDiExtraBundle\Tests\Fixtures\AutowiredServices;
-use Vanio\VanioDiExtraBundle\Tests\Fixtures\Foo;
-use Vanio\VanioDiExtraBundle\Tests\KernelTestCase;
 
 class AutowiringTest extends KernelTestCase
 {

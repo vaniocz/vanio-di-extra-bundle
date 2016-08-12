@@ -1,11 +1,11 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\Tests\DependencyInjection\Metadata;
+namespace Vanio\DiExtraBundle\Tests\DependencyInjection\Metadata;
 
-use Vanio\VanioDiExtraBundle\DependencyInjection\Container;
-use Vanio\VanioDiExtraBundle\DependencyInjection\ServiceForTypeNotFound;
-use Vanio\VanioDiExtraBundle\Tests\Fixtures\Bar;
-use Vanio\VanioDiExtraBundle\Tests\Fixtures\Foo;
-use Vanio\VanioDiExtraBundle\Tests\KernelTestCase;
+use Vanio\DiExtraBundle\DependencyInjection\Container;
+use Vanio\DiExtraBundle\DependencyInjection\ServiceForTypeNotFound;
+use Vanio\DiExtraBundle\Tests\Fixtures\Bar;
+use Vanio\DiExtraBundle\Tests\Fixtures\Foo;
+use Vanio\DiExtraBundle\Tests\KernelTestCase;
 
 class ContainerTest extends KernelTestCase
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\DependencyInjection;
+namespace Vanio\DiExtraBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 

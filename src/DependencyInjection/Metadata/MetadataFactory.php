@@ -1,5 +1,5 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\DependencyInjection\Metadata;
+namespace Vanio\DiExtraBundle\DependencyInjection\Metadata;
 
 interface MetadataFactory
 {

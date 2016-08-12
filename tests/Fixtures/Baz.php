@@ -1,7 +1,7 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\Tests\Fixtures;
+namespace Vanio\DiExtraBundle\Tests\Fixtures;
 
-use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\Inject;
+use Vanio\DiExtraBundle\DependencyInjection\Metadata\Inject;
 
 class Baz
 {

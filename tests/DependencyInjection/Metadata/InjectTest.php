@@ -1,7 +1,7 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\Tests\DependencyInjection\Metadata;
+namespace Vanio\DiExtraBundle\Tests\DependencyInjection\Metadata;
 
-use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\Inject;
+use Vanio\DiExtraBundle\DependencyInjection\Metadata\Inject;
 
 class InjectTest extends \PHPUnit_Framework_TestCase
 {

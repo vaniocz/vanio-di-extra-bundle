@@ -1,5 +1,5 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\Tests\Fixtures;
+namespace Vanio\DiExtraBundle\Tests\Fixtures;
 
 class Qux
 {}

@@ -1,7 +1,7 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\Tests\DependencyInjection;
+namespace Vanio\DiExtraBundle\Tests\DependencyInjection;
 
-use Vanio\VanioDiExtraBundle\DependencyInjection\ServiceForTypeNotFound;
+use Vanio\DiExtraBundle\DependencyInjection\ServiceForTypeNotFound;
 
 class ServiceForTypeNotFoundTest extends \PHPUnit_Framework_TestCase
 {

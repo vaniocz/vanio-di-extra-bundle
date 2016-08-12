@@ -1,5 +1,5 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\DependencyInjection;
+namespace Vanio\DiExtraBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\Compiler\AutowirePass as BaseAutowirePass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

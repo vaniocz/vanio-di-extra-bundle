@@ -1,8 +1,8 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\Tests\Fixtures;
+namespace Vanio\DiExtraBundle\Tests\Fixtures;
 
+use Vanio\DiExtraBundle\DependencyInjection\Metadata\MetadataFactory;
 use Vanio\TypeParser\Parser;
-use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\MetadataFactory;
 
 class AutowiredServices
 {

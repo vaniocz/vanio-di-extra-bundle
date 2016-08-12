@@ -1,12 +1,12 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\Tests\Fixtures;
+namespace Vanio\DiExtraBundle\Tests\Fixtures;
 
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel as BaseAppKernel;
 use Symfony\Component\HttpKernel\Kernel;
-use Vanio\VanioDiExtraBundle\DependencyInjection\Container;
-use Vanio\VanioDiExtraBundle\VanioDiExtraBundle;
+use Vanio\DiExtraBundle\DependencyInjection\Container;
+use Vanio\DiExtraBundle\VanioDiExtraBundle;
 
 class AppKernel extends BaseAppKernel
 {

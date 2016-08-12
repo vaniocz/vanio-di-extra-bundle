@@ -1,10 +1,10 @@
 <?php
-namespace Vanio\VanioDiExtraBundle;
+namespace Vanio\DiExtraBundle;
 
 use Symfony\Component\DependencyInjection\Compiler\AutowirePass as BaseAutowirePass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Vanio\VanioDiExtraBundle\DependencyInjection\AutowirePass;
+use Vanio\DiExtraBundle\DependencyInjection\AutowirePass;
 
 class VanioDiExtraBundle extends Bundle
 {

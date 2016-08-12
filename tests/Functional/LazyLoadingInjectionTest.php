@@ -1,16 +1,16 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\Tests\DependencyInjection\Metadata;
+namespace Vanio\DiExtraBundle\Tests\DependencyInjection\Metadata;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use Vanio\VanioDiExtraBundle\DependencyInjection\Container;
-use Vanio\VanioDiExtraBundle\DependencyInjection\Injector;
-use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\MetadataFactory;
-use Vanio\VanioDiExtraBundle\DependencyInjection\ServiceForTypeNotFound;
-use Vanio\VanioDiExtraBundle\Tests\Fixtures\Baz;
-use Vanio\VanioDiExtraBundle\Tests\Fixtures\Foo;
-use Vanio\VanioDiExtraBundle\Tests\Fixtures\Qux;
-use Vanio\VanioDiExtraBundle\Tests\KernelTestCase;
+use Vanio\DiExtraBundle\DependencyInjection\Container;
+use Vanio\DiExtraBundle\DependencyInjection\Injector;
+use Vanio\DiExtraBundle\DependencyInjection\Metadata\MetadataFactory;
+use Vanio\DiExtraBundle\DependencyInjection\ServiceForTypeNotFound;
+use Vanio\DiExtraBundle\Tests\Fixtures\Baz;
+use Vanio\DiExtraBundle\Tests\Fixtures\Foo;
+use Vanio\DiExtraBundle\Tests\Fixtures\Qux;
+use Vanio\DiExtraBundle\Tests\KernelTestCase;
 
 class LazyLoadingInjectionTest extends KernelTestCase
 {

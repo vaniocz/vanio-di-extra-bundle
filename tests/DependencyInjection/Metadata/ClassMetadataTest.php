@@ -1,9 +1,9 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\Tests\DependencyInjection\Metadata;
+namespace Vanio\DiExtraBundle\Tests\DependencyInjection\Metadata;
 
-use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\ClassMetadata;
-use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\Inject;
-use Vanio\VanioDiExtraBundle\Tests\Fixtures\Foo;
+use Vanio\DiExtraBundle\DependencyInjection\Metadata\ClassMetadata;
+use Vanio\DiExtraBundle\DependencyInjection\Metadata\Inject;
+use Vanio\DiExtraBundle\Tests\Fixtures\Foo;
 
 class ClassMetadataTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,9 +1,9 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\Tests;
+namespace Vanio\DiExtraBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase as BaseKernelTestCase;
-use Vanio\VanioDiExtraBundle\DependencyInjection\Container;
-use Vanio\VanioDiExtraBundle\Tests\Fixtures\AppKernel;
+use Vanio\DiExtraBundle\DependencyInjection\Container;
+use Vanio\DiExtraBundle\Tests\Fixtures\AppKernel;
 
 abstract class KernelTestCase extends BaseKernelTestCase
 {

@@ -13,14 +13,14 @@
     </parameters>
 
     <services>
-        <service id="vanio_di_extra.tests.autowired_services" class="Vanio\VanioDiExtraBundle\Tests\Fixtures\AutowiredServices" autowire="true"/>
-        <service id="vanio_di_extra.tests.foo" class="Vanio\VanioDiExtraBundle\Tests\Fixtures\Foo">
+        <service id="vanio_di_extra.tests.autowired_services" class="Vanio\DiExtraBundle\Tests\Fixtures\AutowiredServices" autowire="true"/>
+        <service id="vanio_di_extra.tests.foo" class="Vanio\DiExtraBundle\Tests\Fixtures\Foo">
             <call method="setContainer">
                 <argument type="service" id="service_container"/>
             </call>
         </service>
-        <service id="vanio_di_extra.tests.baz" class="Vanio\VanioDiExtraBundle\Tests\Fixtures\Baz" public="false"/>
-        <service id="vanio_di_extra.tests.qux" class="Vanio\VanioDiExtraBundle\Tests\Fixtures\Qux" public="false"/>
+        <service id="vanio_di_extra.tests.baz" class="Vanio\DiExtraBundle\Tests\Fixtures\Baz" public="false"/>
+        <service id="vanio_di_extra.tests.qux" class="Vanio\DiExtraBundle\Tests\Fixtures\Qux" public="false"/>
         <service id="vanio_di_extra.tests.private_alias" alias="vanio_di_extra.tests.qux" public="false"/>
         <service id="vanio_di_extra.tests.public_alias" alias="vanio_di_extra.tests.private_alias" public="true"/>
         <service id="vanio_di_extra.tests.private_service" class="stdClass" public="false"/>

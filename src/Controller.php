@@ -1,8 +1,8 @@
 <?php
-namespace Vanio\VanioDiExtraBundle;
+namespace Vanio\DiExtraBundle;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
-use Vanio\VanioDiExtraBundle\DependencyInjection\ContainerAwareTrait;
+use Vanio\DiExtraBundle\DependencyInjection\ContainerAwareTrait;
 
 abstract class Controller extends BaseController
 {

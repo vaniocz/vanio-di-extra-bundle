@@ -16,8 +16,8 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Translation\TranslatorInterface;
-use Vanio\VanioDiExtraBundle\Controller;
-use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\Inject;
+use Vanio\DiExtraBundle\Controller;
+use Vanio\DiExtraBundle\DependencyInjection\Metadata\Inject;
 
 class HelloController extends Controller
 {
@@ -71,8 +71,8 @@ Injecting of container parameters is also possible
 public $cacheDirectory;
 ```
 
-All you need to do for using the Inject annotation is to use `Vanio\VanioDiExtraBundle\DependencyInjection\ContainerAwareTrait` where you normally use the default `Symfony\Component\DependencyInjection\ContainerAwareTrait`.
-There is also an abstract `Vanio\VanioDiExtraBundle\Controller` you can extend as a shortcut.
+All you need to do for using the Inject annotation is to use `Vanio\DiExtraBundle\DependencyInjection\ContainerAwareTrait` where you normally use the default `Symfony\Component\DependencyInjection\ContainerAwareTrait`.
+There is also an abstract `Vanio\DiExtraBundle\Controller` you can extend as a shortcut.
 
 # Installation
 Installation can be done as usually using composer.
@@ -83,7 +83,7 @@ Next step is to register this bundle inside your `AppKernel` but you also have t
 // app/AppKernel.php
 // ...
 
-use Vanio\VanioDiExtraBundle\DependencyInjection\Container;
+use Vanio\DiExtraBundle\DependencyInjection\Container;
 
 class AppKernel extends Kernel
 {
@@ -93,7 +93,7 @@ class AppKernel extends Kernel
     {
         $bundles = [
             // ...
-            new Vanio\VanioDiExtraBundle\VanioDiExtraBundle,
+            new Vanio\DiExtraBundle\VanioDiExtraBundle,
         ];
 
         // ...

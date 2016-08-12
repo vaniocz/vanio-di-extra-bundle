@@ -20,11 +20,11 @@
         "slevomat/coding-standard": "^1.0.5"
     },
     "autoload": {
-        "psr-4": {"Vanio\\VanioDiExtraBundle\\": "src/"},
+        "psr-4": {"Vanio\\DiExtraBundle\\": "src/"},
         "exclude-from-classmap": ["/tests/", "**/Tests/"]
     },
     "autoload-dev": {
-        "psr-4": {"Vanio\\VanioDiExtraBundle\\Tests\\": "tests/"}
+        "psr-4": {"Vanio\\DiExtraBundle\\Tests\\": "tests/"}
     },
     "scripts": {
         "test": "\"vendor/bin/phpunit\"",

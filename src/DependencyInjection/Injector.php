@@ -1,8 +1,8 @@
 <?php
-namespace Vanio\VanioDiExtraBundle\DependencyInjection;
+namespace Vanio\DiExtraBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Vanio\VanioDiExtraBundle\DependencyInjection\Metadata\MetadataFactory;
+use Vanio\DiExtraBundle\DependencyInjection\Metadata\MetadataFactory;
 
 class Injector
 {
