@@ -16,7 +16,7 @@ class ClassMetadataFactoryTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        AnnotationRegistry::registerFile(__DIR__ . '/../../../src/DependencyInjection/Metadata/Inject.php');
+        AnnotationRegistry::registerFile(__DIR__ . '/../../../DependencyInjection/Metadata/Inject.php');
         $this->classMetadataFactory = new ClassMetadataFactory(new AnnotationReader, new TypeParser);
     }
 
