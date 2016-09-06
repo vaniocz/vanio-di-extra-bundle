@@ -43,6 +43,12 @@ class Foo implements ContainerAwareInterface
     public $extendedAutowiredService;
 
     /**
+     * @var Foo|\stdClass
+     * @Inject
+     */
+    public $unionAutowiredService;
+
+    /**
      * @var string
      * @Inject("%vanio_di_extra.tests.parameter%/foo")
      */

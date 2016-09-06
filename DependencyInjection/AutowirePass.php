@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * {@inheritDoc}
  * Stores a map of all autowirable types as keys and public service definition or alias IDs
- * into "vanio_di_extra_autowirable_types" container parameter.
+ * into "vanio_di_extra.autowirable_types" container parameter.
  */
 class AutowirePass extends BaseAutowirePass
 {
@@ -17,7 +17,7 @@ class AutowirePass extends BaseAutowirePass
     public function process(ContainerBuilder $container)
     {
         $this->container = $container;
-        $container->setParameter('vanio_di_extra_autowirable_types', $this->resolveAutowirableTypes());
+        $container->setParameter('vanio_di_extra.autowirable_types', $this->resolveAutowirableTypes());
         parent::process($container);
     }
 

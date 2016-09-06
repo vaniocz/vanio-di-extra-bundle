@@ -48,6 +48,10 @@ class ClassMetadataFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(Foo::class, $inject->type());
         $this->assertTrue($inject->isRequired());
 
+        $inject = $classMetadata->getPropertyMetadata('unionAutowiredService');
+        $this->assertSame(Foo::class, $inject->type());
+        $this->assertTrue($inject->isRequired());
+
         $inject = $classMetadata->getPropertyMetadata('parameter');
         $this->assertSame('%vanio_di_extra.tests.parameter%/foo', $inject->parameter());
 

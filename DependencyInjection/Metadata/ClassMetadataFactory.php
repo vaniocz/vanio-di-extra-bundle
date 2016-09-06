@@ -60,7 +60,7 @@ class ClassMetadataFactory implements MetadataFactory
         } elseif ($inject->id() || $inject->parameter()) {
             return $inject;
         } elseif ($type = $this->typeParser->parsePropertyTypes($property->class)[$property->name] ?? null) {
-            return Inject::byType($type->type(), !$type->isNullable());
+            return Inject::byType($type->primaryType()->type(), !$type->isNullable());
         }
 
         throw new \LogicException(sprintf(
