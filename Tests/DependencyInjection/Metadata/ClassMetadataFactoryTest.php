@@ -3,13 +3,14 @@ namespace Vanio\DiExtraBundle\Tests\DependencyInjection\Metadata;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
+use PHPUnit\Framework\TestCase;
 use Vanio\DiExtraBundle\DependencyInjection\Metadata\ClassMetadataFactory;
 use Vanio\DiExtraBundle\Tests\Fixtures\Bar;
 use Vanio\DiExtraBundle\Tests\Fixtures\Baz;
 use Vanio\DiExtraBundle\Tests\Fixtures\Foo;
 use Vanio\TypeParser\TypeParser;
 
-class ClassMetadataFactoryTest extends \PHPUnit_Framework_TestCase
+class ClassMetadataFactoryTest extends TestCase
 {
     /** @var ClassMetadataFactory */
     private $classMetadataFactory;

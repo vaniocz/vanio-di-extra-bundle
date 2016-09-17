@@ -1,9 +1,10 @@
 <?php
 namespace Vanio\DiExtraBundle\Tests\DependencyInjection\Metadata;
 
+use PHPUnit\Framework\TestCase;
 use Vanio\DiExtraBundle\DependencyInjection\Metadata\Inject;
 
-class InjectTest extends \PHPUnit_Framework_TestCase
+class InjectTest extends TestCase
 {
     function test_id_can_be_obtained()
     {

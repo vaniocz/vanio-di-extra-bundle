@@ -1,9 +1,10 @@
 <?php
 namespace Vanio\DiExtraBundle\Tests\DependencyInjection;
 
+use PHPUnit\Framework\TestCase;
 use Vanio\DiExtraBundle\DependencyInjection\ServiceForTypeNotFound;
 
-class ServiceForTypeNotFoundTest extends \PHPUnit_Framework_TestCase
+class ServiceForTypeNotFoundTest extends TestCase
 {
     function test_message_can_be_obtained()
     {

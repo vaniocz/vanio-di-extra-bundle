@@ -2,13 +2,14 @@
 namespace Vanio\DiExtraBundle\Tests\DependencyInjection\Metadata;
 
 use Doctrine\Common\Cache\ArrayCache;
+use PHPUnit\Framework\TestCase;
 use Vanio\DiExtraBundle\DependencyInjection\Metadata\CachingMetadataFactory;
 use Vanio\DiExtraBundle\DependencyInjection\Metadata\ClassMetadata;
 use Vanio\DiExtraBundle\DependencyInjection\Metadata\ClassMetadataFactory;
 use Vanio\DiExtraBundle\Tests\Fixtures\Bar;
 use Vanio\DiExtraBundle\Tests\Fixtures\Foo;
 
-class CachingMetadataFactoryTest extends \PHPUnit_Framework_TestCase
+class CachingMetadataFactoryTest extends TestCase
 {
     /** @var ClassMetadata */
     private $classMetadata;
