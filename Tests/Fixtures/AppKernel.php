@@ -7,12 +7,13 @@ use Symfony\Component\HttpKernel\Kernel as BaseAppKernel;
 use Symfony\Component\HttpKernel\Kernel;
 use Vanio\DiExtraBundle\DependencyInjection\Container;
 use Vanio\DiExtraBundle\VanioDiExtraBundle;
+use Vanio\TypeParser\Bundle\VanioTypeParserBundle;
 
 class AppKernel extends BaseAppKernel
 {
     public function registerBundles(): array
     {
-        return [new FrameworkBundle, new VanioDiExtraBundle];
+        return [new FrameworkBundle, new VanioTypeParserBundle, new VanioDiExtraBundle];
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader)

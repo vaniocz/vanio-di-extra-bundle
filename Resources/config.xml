@@ -2,8 +2,6 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
         <parameter key="vanio_di_extra.filesystem_cache.class">Doctrine\Common\Cache\FilesystemCache</parameter>
-        <parameter key="vanio_di_extra.type_parser.class">Vanio\TypeParser\TypeParser</parameter>
-        <parameter key="vanio_di_extra.caching_parser.class">Vanio\TypeParser\CachingParser</parameter>
         <parameter key="vanio_di_extra.dependency_injection.injector.class">Vanio\DiExtraBundle\DependencyInjection\Injector</parameter>
         <parameter key="vanio_di_extra.dependency_injection.metadata.class_metadata_factory.class">Vanio\DiExtraBundle\DependencyInjection\Metadata\ClassMetadataFactory</parameter>
         <parameter key="vanio_di_extra.dependency_injection.metadata.caching_metadata_factory.class">Vanio\DiExtraBundle\DependencyInjection\Metadata\CachingMetadataFactory</parameter>
@@ -14,22 +12,17 @@
             <argument>%kernel.cache_dir%/vanio_di_extra</argument>
         </service>
 
-        <service id="vanio_di_extra.type_parser" class="%vanio_di_extra.type_parser.class%" public="false" autowire="true"/>
-
-        <service id="vanio_di_extra.caching_parser" class="%vanio_di_extra.caching_parser.class%" autowire="true">
-            <argument type="service" id="vanio_di_extra.type_parser"/>
-            <argument type="service" id="vanio_di_extra.filesystem_cache"/>
-            <argument>%kernel.debug%</argument>
-            <autowiring-type>Vanio\TypeParser\Parser</autowiring-type>
+        <service id="vanio_di_extra.dependency_injection.injector" class="%vanio_di_extra.dependency_injection.injector.class%">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="vanio_di_extra.dependency_injection.metadata.caching_metadata_factory"/>
         </service>
 
-        <service id="vanio_di_extra.dependency_injection.injector" class="%vanio_di_extra.dependency_injection.injector.class%" autowire="true"/>
-
-        <service id="vanio_di_extra.dependency_injection.metadata.class_metadata_factory" class="%vanio_di_extra.dependency_injection.metadata.class_metadata_factory.class%" public="false" autowire="true">
+        <service id="vanio_di_extra.dependency_injection.metadata.class_metadata_factory" class="%vanio_di_extra.dependency_injection.metadata.class_metadata_factory.class%" public="false">
             <argument type="service" id="annotation_reader"/>
+            <argument type="service" id="vanio_type_parser.parser"/>
         </service>
 
-        <service id="vanio_di_extra.dependency_injection.metadata.caching_metadata_factory" class="%vanio_di_extra.dependency_injection.metadata.caching_metadata_factory.class%" autowire="true">
+        <service id="vanio_di_extra.dependency_injection.metadata.caching_metadata_factory" class="%vanio_di_extra.dependency_injection.metadata.caching_metadata_factory.class%">
             <argument type="service" id="vanio_di_extra.dependency_injection.metadata.class_metadata_factory"/>
             <argument type="service" id="vanio_di_extra.filesystem_cache"/>
             <argument>%kernel.debug%</argument>
