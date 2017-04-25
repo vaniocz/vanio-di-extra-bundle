@@ -9,7 +9,7 @@
         {"name": "Marek Štípek", "email": "marek.stipek@vanio.cz"}
     ],
     "require": {
-        "php": "7.0.*",
+        "php": "^7.0",
         "doctrine/cache": "^1.6",
         "symfony/framework-bundle": "^3.0",
         "vanio/type-parser": "^0.1@dev"
