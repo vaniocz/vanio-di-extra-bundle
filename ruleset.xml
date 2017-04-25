@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ruleset name="Vanio Dependency Injection Extra Bundle Ruleset">
     <rule ref="vendor/vanio/coding-standards/ruleset.xml">
-        <!--<exclude name="SlevomatCodingStandard.Classes.ClassConstantVisibility"/>-->
+        <exclude name="SlevomatCodingStandard.Classes.ClassConstantVisibility"/>
         <exclude name="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue"/>
     </rule>
 

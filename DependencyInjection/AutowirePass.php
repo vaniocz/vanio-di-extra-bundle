@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class AutowirePass extends BaseAutowirePass
 {
     /** @var ContainerBuilder|null */
-    private $container;
+    protected $container;
 
     public function process(ContainerBuilder $container)
     {
