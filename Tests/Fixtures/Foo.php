@@ -84,6 +84,9 @@ class Foo implements ContainerAwareInterface
      */
     private $privateProperty;
 
+    /**
+     * @return null
+     */
     public function privateProperty()
     {
         return $this->privateProperty;

@@ -18,7 +18,7 @@ class Container extends BaseContainer
      * @throws ServiceForTypeNotFound When the service is not found
      * @throws \Exception If an exception has been thrown when the service has been resolved
      */
-    public function getByType(string $type, $invalidBehavior = self::EXCEPTION_ON_INVALID_REFERENCE)
+    public function getByType(string $type, int $invalidBehavior = self::EXCEPTION_ON_INVALID_REFERENCE)
     {
         if (!$id = $this->getParameter('vanio_di_extra.autowirable_types')[$type] ?? null) {
             if ($invalidBehavior === self::EXCEPTION_ON_INVALID_REFERENCE) {

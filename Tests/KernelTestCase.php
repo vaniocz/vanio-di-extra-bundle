@@ -10,7 +10,7 @@ abstract class KernelTestCase extends BaseKernelTestCase
     /** @var Container|null */
     private static $container;
 
-    protected static function getKernelClass()
+    protected static function getKernelClass(): string
     {
         return AppKernel::class;
     }
