@@ -14,6 +14,9 @@ class AutowirePass extends BaseAutowirePass
     /** @var ContainerBuilder|null */
     protected $container;
 
+    /** @var string[]|null */
+    private $publicAliases;
+
     public function process(ContainerBuilder $container)
     {
         $this->container = $container;
@@ -30,7 +33,7 @@ class AutowirePass extends BaseAutowirePass
 
         foreach ($types as $type => $id) {
             if (!$this->container->getDefinition($id)->isPublic()) {
-                $types[$type] = $this->findPublicAliasId($id);
+                $types[$type] = $this->publicAliases()[$id] ?? null;
             }
         }
 
@@ -60,23 +63,26 @@ class AutowirePass extends BaseAutowirePass
     }
 
     /**
-     * @param string $serviceId
-     * @return string|null
+     * @return string[]
      */
-    private function findPublicAliasId(string $serviceId)
+    private function publicAliases(): array
     {
-        $serviceIds = [$serviceId => $serviceId];
+        if ($this->publicAliases === null) {
+            $this->publicAliases = [];
 
-        foreach ($this->container->getAliases() as $id => $alias) {
-            if (isset($serviceIds[(string) $alias])) {
-                if ($alias->isPublic()) {
-                    return $id;
-                } else {
-                    $serviceIds[$id] = $id;
+            foreach ($this->container->getAliases() as $id => $alias) {
+                if (!$alias->isPublic()) {
+                    continue;
                 }
+
+                while ($this->container->hasAlias((string) $alias)) {
+                    $alias = $this->container->getAlias($alias);
+                }
+
+                $this->publicAliases[(string) $alias] = $id;
             }
         }
 
-        return null;
+        return $this->publicAliases;
     }
 }
