@@ -5,7 +5,7 @@
 ![PHP7](https://img.shields.io/badge/php-7-6B7EB9.svg)
 [![License](https://poser.pugx.org/vanio/vanio-di-extra-bundle/license)](https://github.com/vaniocz/vanio-di-extra-bundle/blob/master/LICENSE)
 
-A Symfony2 Bundle providing an ability to resolve services by type by calling `getByType` on service container and lazily inject services or parameters into public properties of classes implementing `ContainerAwareInterface` (like controllers, CLI commands or Doctrine fixtures) using `Inject` annotation.
+A Symfony2/3 Bundle providing an ability to resolve services by type by calling `getByType` on service container and lazily inject services or parameters into public properties of classes implementing `ContainerAwareInterface` (like controllers, CLI commands or Doctrine fixtures) using `Inject` annotation.
 JMS DI Extra Bundle has a similar annotation but it covers much more functionality. This bundle is lightweight and does not use AOP.
 
 # Example

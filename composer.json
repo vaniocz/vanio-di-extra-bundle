@@ -11,6 +11,7 @@
     "require": {
         "php": "^7.0",
         "doctrine/cache": "^1.6",
+        "symfony/dependency-injection": "^3.0",
         "symfony/framework-bundle": "^3.0",
         "vanio/type-parser": "^0.1@dev"
     },

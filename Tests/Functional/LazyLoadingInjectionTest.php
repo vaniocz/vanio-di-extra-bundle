@@ -63,7 +63,7 @@ class LazyLoadingInjectionTest extends KernelTestCase
     function test_it_cannot_inject_private_service()
     {
         $this->expectException(ServiceNotFoundException::class);
-        $this->expectExceptionMessage('You have requested a non-existent service "vanio_di_extra.tests.private_service".');
+        $this->expectExceptionMessageRegExp('~You have requested a non-existent service "vanio_di_extra\.tests\.private_service"\.|The "vanio_di_extra\.tests\.private_service" service or alias has been removed or inlined when the container was compiled\.~');
         $this->foo()->privateService;
     }
 

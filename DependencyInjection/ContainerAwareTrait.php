@@ -28,7 +28,7 @@ trait ContainerAwareTrait
         }
 
         $this->container = $container;
-        $this->injector = $container->getByType(Injector::class);
+        $this->injector = $container->get('vanio_di_extra.dependency_injection.injector');
         $this->injector->initializeProperties($this);
     }
 
