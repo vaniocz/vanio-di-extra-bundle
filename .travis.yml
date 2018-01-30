@@ -9,7 +9,7 @@ php:
 
 install:
     - php -n ~/.phpenv/versions/$(phpenv version-name)/bin/composer self-update
-    - php -n ~/.phpenv/versions/$(phpenv version-name)/bin/composer require satooshi/php-coveralls
+    - php -n ~/.phpenv/versions/$(phpenv version-name)/bin/composer require php-coveralls/php-coveralls
     - php -n ~/.phpenv/versions/$(phpenv version-name)/bin/composer update
 
 script:
@@ -17,4 +17,4 @@ script:
     - phpunit --coverage-clover build/logs/clover.xml
 
 after_success:
-    - travis_retry php -n vendor/bin/coveralls
+    - travis_retry php -n vendor/bin/php-coveralls
