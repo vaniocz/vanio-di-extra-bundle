@@ -14,6 +14,7 @@ trait ContainerAwareTrait
     /**
      * Sets a container and initializes properties for injection.
      *
+     * @required
      * @param Container|null $container
      * @throws \InvalidArgumentException
      */
