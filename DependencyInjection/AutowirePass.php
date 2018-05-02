@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class AutowirePass extends BaseAutowirePass
 {
-    /** @var ContainerBuilder|null */
+    /** @var ContainerBuilder */
     protected $container;
 
     /** @var string[]|null */
@@ -29,15 +29,19 @@ class AutowirePass extends BaseAutowirePass
      */
     private function resolveAutowirableTypes(): array
     {
-        $types = $this->resolveAvailableTypes();
+        $autowirableTypes = [];
 
-        foreach ($types as $type => $id) {
-            if (!$this->container->getDefinition($id)->isPublic()) {
-                $types[$type] = $this->publicAliases()[$id] ?? null;
+        foreach ($this->resolveAvailableTypes() as $type => $id) {
+            $autowirableTypes[$type] = $this->resolvePublicId($id);
+        }
+
+        foreach ($this->resolveAmbiguousServiceTypes() as $type => $ids) {
+            if ($this->container->hasAlias($type)) {
+                $autowirableTypes[$type] = $this->resolvePublicId($type);
             }
         }
 
-        return $types;
+        return $autowirableTypes;
     }
 
     /**
@@ -48,7 +52,7 @@ class AutowirePass extends BaseAutowirePass
         $container = $this->container;
 
         $resolveAvailableTypes = function () use ($container) {
-            $this->{'container'} = $container;
+            $this->container = $container;
 
             if ($this->{'types'} === null) {
                 $this->{'populateAvailableTypes'}();
@@ -65,6 +69,54 @@ class AutowirePass extends BaseAutowirePass
     /**
      * @return string[]
      */
+    private function resolveAmbiguousServiceTypes(): array
+    {
+        $container = $this->container;
+
+        $resolveAmbiguousServiceTypes = function () use ($container) {
+            $this->container = $container;
+
+            if ($this->{'ambiguousServiceTypes'} === null) {
+                $this->{'populateAvailableTypes'}();
+            }
+
+            return $this->{'ambiguousServiceTypes'};
+        };
+
+        $resolveAmbiguousServiceTypes = $resolveAmbiguousServiceTypes->bindTo($this, parent::class);
+
+        return $resolveAmbiguousServiceTypes();
+    }
+
+    /**
+     * @param string $id
+     * @return string|null
+     */
+    public function resolvePublicId(string $id)
+    {
+        if ($this->container->hasAlias($id)) {
+            $id = $this->resolveAliasId($id);
+        }
+
+        return $this->container->getDefinition($id)->isPublic() ? $id : $this->publicAliases()[$id] ?? null;
+    }
+
+    private function resolveAliasId(string $alias): string
+    {
+        while ($this->container->hasAlias((string) $alias)) {
+            $alias = $this->container->getAlias($alias);
+        }
+
+        while ($this->container->hasAlias("$alias.inner")) {
+            $alias = $this->container->getAlias("$alias.inner");
+        }
+
+        return $alias;
+    }
+
+    /**
+     * @return string[]
+     */
     private function publicAliases(): array
     {
         if ($this->publicAliases === null) {
@@ -75,11 +127,7 @@ class AutowirePass extends BaseAutowirePass
                     continue;
                 }
 
-                while ($this->container->hasAlias((string) $alias)) {
-                    $alias = $this->container->getAlias($alias);
-                }
-
-                $this->publicAliases[(string) $alias] = $id;
+                $this->publicAliases[$this->resolveAliasId($alias)] = $id;
             }
         }
 
