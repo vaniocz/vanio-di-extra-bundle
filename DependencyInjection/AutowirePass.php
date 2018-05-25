@@ -90,15 +90,17 @@ class AutowirePass extends BaseAutowirePass
 
     /**
      * @param string $id
-     * @return string|null
+     * @return string
      */
-    public function resolvePublicId(string $id)
+    public function resolvePublicId(string $id): string
     {
         if ($this->container->hasAlias($id)) {
             $id = $this->resolveAliasId($id);
         }
 
-        return $this->container->getDefinition($id)->isPublic() ? $id : $this->publicAliases()[$id] ?? null;
+        $definition = $this->container->getDefinition($id);
+
+        return $definition->isPublic() ? $id : $this->publicAliases()[$id] ?? $id;
     }
 
     private function resolveAliasId(string $alias): string
