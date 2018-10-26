@@ -8,16 +8,18 @@
     </parameters>
 
     <services>
-        <service id="vanio_di_extra.filesystem_cache" class="%vanio_di_extra.filesystem_cache.class%" public="false">
+        <defaults public="false"/>
+
+        <service id="vanio_di_extra.filesystem_cache" class="%vanio_di_extra.filesystem_cache.class%">
             <argument>%kernel.cache_dir%/vanio_di_extra</argument>
         </service>
 
-        <service id="vanio_di_extra.dependency_injection.injector" class="%vanio_di_extra.dependency_injection.injector.class%">
+        <service id="vanio_di_extra.dependency_injection.injector" class="%vanio_di_extra.dependency_injection.injector.class%" public="true">
             <argument type="service" id="service_container"/>
             <argument type="service" id="vanio_di_extra.dependency_injection.metadata.caching_metadata_factory"/>
         </service>
 
-        <service id="vanio_di_extra.dependency_injection.metadata.class_metadata_factory" class="%vanio_di_extra.dependency_injection.metadata.class_metadata_factory.class%" public="false">
+        <service id="vanio_di_extra.dependency_injection.metadata.class_metadata_factory" class="%vanio_di_extra.dependency_injection.metadata.class_metadata_factory.class%">
             <argument type="service" id="annotation_reader"/>
             <argument type="service" id="vanio_type_parser.parser"/>
         </service>
@@ -26,7 +28,8 @@
             <argument type="service" id="vanio_di_extra.dependency_injection.metadata.class_metadata_factory"/>
             <argument type="service" id="vanio_di_extra.filesystem_cache"/>
             <argument>%kernel.debug%</argument>
-            <autowiring-type>Vanio\DiExtraBundle\DependencyInjection\Metadata\MetadataFactory</autowiring-type>
         </service>
+
+        <service id="Vanio\DiExtraBundle\DependencyInjection\Metadata\MetadataFactory" alias="vanio_di_extra.dependency_injection.metadata.caching_metadata_factory"/>
     </services>
 </container>
