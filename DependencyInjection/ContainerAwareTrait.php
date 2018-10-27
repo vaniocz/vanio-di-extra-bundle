@@ -12,19 +12,12 @@ trait ContainerAwareTrait
     private $injector;
 
     /**
-     * Sets a container and initializes properties for injection.
-     *
      * @required
-     * @param Container|null $container
-     * @throws \InvalidArgumentException
      */
-    public function setContainer(ContainerInterface $container = null)
+    public function setContainer(ContainerInterface $container = null): void
     {
-        if (!$container instanceof Container) {
-            throw new \InvalidArgumentException(sprintf(
-                'Container must be an instance of "%s" class. Haven\'t you forgot to reimplement "getContainerBaseClass" inside your AppKernel class as it is described in README?',
-                Container::class
-            ));
+        if (!$container) {
+            return;
         }
 
         $this->container = $container;
@@ -33,8 +26,6 @@ trait ContainerAwareTrait
     }
 
     /**
-     * Tries to inject service or parameter into the given property.
-     *
      * @param string $property
      * @return mixed
      */

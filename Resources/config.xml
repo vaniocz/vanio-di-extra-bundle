@@ -2,20 +2,25 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
         <parameter key="vanio_di_extra.filesystem_cache.class">Doctrine\Common\Cache\FilesystemCache</parameter>
+        <parameter key="vanio_di_extra.injector_locator.class">Symfony\Component\DependencyInjection\ServiceLocator</parameter>
         <parameter key="vanio_di_extra.dependency_injection.injector.class">Vanio\DiExtraBundle\DependencyInjection\Injector</parameter>
         <parameter key="vanio_di_extra.dependency_injection.metadata.class_metadata_factory.class">Vanio\DiExtraBundle\DependencyInjection\Metadata\ClassMetadataFactory</parameter>
         <parameter key="vanio_di_extra.dependency_injection.metadata.caching_metadata_factory.class">Vanio\DiExtraBundle\DependencyInjection\Metadata\CachingMetadataFactory</parameter>
     </parameters>
 
     <services>
-        <defaults public="false"/>
-
         <service id="vanio_di_extra.filesystem_cache" class="%vanio_di_extra.filesystem_cache.class%">
             <argument>%kernel.cache_dir%/vanio_di_extra</argument>
         </service>
 
+        <service id="vanio_di_extra.injector_locator" class="%vanio_di_extra.injector_locator.class%" public="true">
+            <argument type="collection"/>
+        </service>
+
         <service id="vanio_di_extra.dependency_injection.injector" class="%vanio_di_extra.dependency_injection.injector.class%" public="true">
             <argument type="service" id="service_container"/>
+            <argument/>
+            <!--<argument type="service" id="vanio_di_extra.injector_locator"/>-->
             <argument type="service" id="vanio_di_extra.dependency_injection.metadata.caching_metadata_factory"/>
         </service>
 
@@ -30,6 +35,6 @@
             <argument>%kernel.debug%</argument>
         </service>
 
-        <service id="Vanio\DiExtraBundle\DependencyInjection\Metadata\MetadataFactory" alias="vanio_di_extra.dependency_injection.metadata.caching_metadata_factory"/>
+        <service id="vanio_di_extra.dependency_injection.metadata.metadata_factory" alias="vanio_di_extra.dependency_injection.metadata.caching_metadata_factory"/>
     </services>
 </container>

@@ -9,10 +9,10 @@
         {"name": "Marek Štípek", "email": "marek.stipek@vanio.cz"}
     ],
     "require": {
-        "php": "^7.0",
-        "doctrine/cache": "^1.6",
-        "symfony/dependency-injection": "^3.0",
-        "symfony/framework-bundle": "^3.0",
+        "php": "^7.1",
+        "doctrine/cache": "^1.8",
+        "symfony/dependency-injection": "^4.0",
+        "symfony/framework-bundle": "^4.0",
         "vanio/type-parser": "^0.1@dev"
     },
     "require-dev": {
@@ -33,7 +33,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.1.x-dev"
+            "dev-master": "0.2.x-dev"
         }
     }
 }
