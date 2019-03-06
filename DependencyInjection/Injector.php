@@ -1,7 +1,9 @@
 <?php
 namespace Vanio\DiExtraBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use Symfony\Component\DependencyInjection\ServiceLocator;
 use Vanio\DiExtraBundle\DependencyInjection\Metadata\MetadataFactory;
 
 class Injector
@@ -9,32 +11,19 @@ class Injector
     /** @var Container */
     private $container;
 
+    /** @var ServiceLocator */
+    private $serviceLocator;
+
     /** @var MetadataFactory */
     private $metadataFactory;
 
-    /**
-     * @param Container $container
-     * @param MetadataFactory $metadataFactory
-     * @throws \InvalidArgumentException
-     */
-    public function __construct(ContainerInterface $container, MetadataFactory $metadataFactory)
+    public function __construct(Container $container, ServiceLocator $serviceLocator, MetadataFactory $metadataFactory)
     {
-        if (!$container instanceof Container) {
-            throw new \InvalidArgumentException(sprintf(
-                'Container must be an instance of "%s" class. Haven\'t you forgot to reimplement "getContainerBaseClass" inside your AppKernel class as it is described in README?',
-                Container::class
-            ));
-        }
-
         $this->container = $container;
+        $this->serviceLocator = $serviceLocator;
         $this->metadataFactory = $metadataFactory;
     }
 
-    /**
-     * Unsets all properties marked for injection so lazy loading using __get is possible.
-     *
-     * @param object $object
-     */
     public function initializeProperties($object)
     {
         foreach (array_keys($this->metadataFactory->getMetadataForClass($object)->getPropertyMetadata()) as $property) {
@@ -64,13 +53,15 @@ class Injector
                 return;
             }
 
-            $invalidBehavior = $inject->isRequired()
-                ? Container::EXCEPTION_ON_INVALID_REFERENCE
-                : Container::NULL_ON_INVALID_REFERENCE;
-
-            $object->$property = $inject->id()
-                ? $this->container->get($inject->id(), $invalidBehavior)
-                : $this->container->getByType($inject->type(), $invalidBehavior);
+            try {
+                $object->$property = $inject->id()
+                    ? $this->serviceLocator->get($inject->id())
+                    : $this->serviceLocator->get($inject->type());
+            } catch (ServiceNotFoundException $e) {
+                if ($inject->isRequired()) {
+                    throw $e;
+                }
+            }
         } else {
             // so magic __get is not called on next try
             $object->$property = null; // @codeCoverageIgnore

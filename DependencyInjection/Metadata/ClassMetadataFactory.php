@@ -12,7 +12,7 @@ class ClassMetadataFactory implements MetadataFactory
     /** @var Parser */
     private $typeParser;
 
-    /** @var array */
+    /** @var mixed[] */
     private $metadata = [];
 
     public function __construct(Reader $annotationReader, Parser $typeParser)
