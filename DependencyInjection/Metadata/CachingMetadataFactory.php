@@ -67,6 +67,10 @@ class CachingMetadataFactory implements MetadataFactory
 
         do {
             $modificationTimes[] = @filemtime($reflectionClass->getFileName());
+
+            foreach ($reflectionClass->getTraits() as $reflectionTrait) {
+                $modificationTimes[] = @filemtime($reflectionTrait->getFileName());
+            }
         } while ($reflectionClass = $reflectionClass->getParentClass());
 
         return sprintf('%s[%s][%s][%s]', __CLASS__, $file, implode(',', $modificationTimes), $class);
