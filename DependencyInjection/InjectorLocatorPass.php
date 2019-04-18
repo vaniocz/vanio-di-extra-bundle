@@ -43,9 +43,13 @@ class InjectorLocatorPass implements CompilerPassInterface
         $services = [];
 
         foreach ($this->container->getDefinitions() as $definition) {
-            $class = $definition->getClass();
+            if (!$class = $definition->getClass()) {
+                continue;
+            } elseif (Strings::contains($class, '%')) {
+                $class = $this->container->getParameterBag()->resolveValue($class);
+            }
 
-            if (!$class || !$this->isContainerAware($class)) {
+            if (!$this->isContainerAware($class)) {
                 continue;
             }
 
